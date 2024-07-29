@@ -1,0 +1,32 @@
+{
+  "name": "my-dapp",
+  "version": "0.1.0",
+  "description": "TypeScript DApp",
+  "dependencies": {
+    "@deroll/app": "^0.7.0",
+    "@deroll/wallet": "^0.8.0",
+    "cast": "^1.1.0",
+    "openapi-fetch": "^0.7",
+    "viem": "^2.18.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "esbuild": "^0.19",
+    "npm-run-all": "^4",
+    "openapi-typescript": "^6",
+    "ts-node": "^10",
+    "typescript": "^5",
+    "vitest": "^0.34"
+  },
+  "scripts": {
+    "build": "run-s codegen compile",
+    "codegen": "ts-node schema.ts",
+    "compile": "tsc && esbuild ./src/index.ts --bundle --outfile=dist/index.js --platform=node --target=node20",
+    "start": "ROLLUP_HTTP_SERVER_URL=\"http://127.0.0.1:5004\" ts-node src/index.ts"
+  },
+  "keywords": [
+    "cartesi"
+  ],
+  "license": "MIT",
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}
