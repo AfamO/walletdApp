@@ -25,6 +25,8 @@ app.addAdvanceHandler( async({metadata, payload}) =>{
 
   } catch(e) {
     app.createReport({payload: stringToHex(String(e))});
+    console.error(e)
+
     
     return "reject";
   }
@@ -32,7 +34,7 @@ app.addAdvanceHandler( async({metadata, payload}) =>{
 });
 
 app.addInspectHandler( async({payload})=>{
-const url = hexToString(payload).split("/") //rollup/balance/address
+const url = hexToString(payload).split("/") //rollup/balance/accountAddress
 console.log("Inspect call:", url);
 const etherBalance = wallet.etherBalanceOf(<string>url[1]);
 await app.createReport({payload : stringToHex(String(etherBalance))});
